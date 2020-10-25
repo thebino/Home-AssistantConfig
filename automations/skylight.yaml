@@ -1,0 +1,30 @@
+- id: '1591628589382'
+  alias: Check Skylight
+  description: Send an alarm if at least one skylight is open at sunset.
+  trigger:
+  - event: sunset
+    platform: sun
+  condition:
+  - condition: or
+    conditions:
+    - condition: device
+      device_id: 3f3723ec944b443b9351a62f46931799
+      domain: binary_sensor
+      entity_id: binary_sensor.0x00158d00047d1592_contact
+      type: is_open
+    - condition: device
+      device_id: 882921689f244f16b6fbe7b3118f40c7
+      domain: binary_sensor
+      entity_id: binary_sensor.0x00158d00049dad3c_contact
+      type: is_open
+  action:
+  - data:
+      title: Skylight
+      message: At least one Skylight is still open!
+      data:
+        importance: high
+        timeout: 1200
+        tag: Alert
+        channel: Alert
+    service: notify.mobile_app_pixel_5
+  mode: single

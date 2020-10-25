@@ -1,0 +1,33 @@
+- id: '1600433472949'
+  alias: Doorbell
+  description: Notify mobile phones when doorbell rang
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: f5785908f9a311eaadcf19a78cb5bbf2
+    type: action
+    subtype: vibration
+    discovery_id: 0x00158d000323490e action_vibration
+  condition: []
+  action:
+  - data:
+      message: Tür Klingel!
+      data:
+        importance: high
+        timeout: 600
+        color: '#F42C40'
+        tag: Doorbell
+        channel: Doorbell
+    service: notify.mobile_app_pixel_5
+  mode: single
+- id: '1600439092711'
+  alias: Doorbell sensitiviy - change
+  description: https://www.zigbee2mqtt.io/devices/DJT11LM.html#sensitivity
+  trigger: []
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      topic: zigbee2mqtt/0x00158d000323490e/set
+      payload: '{"sensitivity": "high"}'
+  mode: single

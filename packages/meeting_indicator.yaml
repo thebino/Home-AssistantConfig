@@ -1,0 +1,15 @@
+# -------------------------------------------
+# Meeting indicator is a ESP32 running a webserver and two connected LEDs
+# LED state can be changed via REST Commands
+# 
+# Based on this idea: https://twitter.com/cairn4/status/1245539977993355265
+# -------------------------------------------
+rest_command:
+  headphones_on:
+    url: !secret headphone_indicator_on
+  headphones_off:
+    url: !secret headphone_indicator_off
+  meeting_on:
+    url: !secret meeting_indicator_on
+  meeting_off:
+    url: !secret meeting_indicator_off

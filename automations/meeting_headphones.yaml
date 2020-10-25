@@ -1,0 +1,28 @@
+- id: '1603620057293'
+  alias: Meeting Indicator - Headphones on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.headphones
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: rest_command.headphones_on
+    data: {}
+  mode: restart
+  
+  
+- id: '1601674705124'
+  alias: Meeting Indicator - Headphones off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.headphones
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: rest_command.headphones_off
+    data: {}
+  mode: restart

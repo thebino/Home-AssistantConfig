@@ -1,0 +1,24 @@
+#
+# Notify mobile phone on button press
+#
+- id: '1603645883071'
+  alias: Button
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 4cafe84b73454a72b2f5279f4ca88534
+    type: click
+    subtype: single
+    discovery_id: 0x00158d00028f554c click_single
+  condition: []
+  action:
+  - data:
+      message: Button Alarm!
+      data:
+        importance: high
+        timeout: 120
+        color: '#2CF46B'
+    service: notify.mobile_app_pixel_5
+  mode: restart
+

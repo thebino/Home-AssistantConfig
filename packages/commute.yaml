@@ -1,0 +1,15 @@
+# -------------------------------------------
+# Daily Commute into the office
+# 
+# Based on: https://www.home-assistant.io/integrations/here_travel_time/
+# -------------------------------------------
+sensor:
+  - platform: here_travel_time
+    name: "Office Commute"
+    api_key: !secret here_api_key
+    origin_latitude: !secret here_origin_latitude_office
+    origin_longitude: !secret here_origin_longitude_office
+    destination_latitude: !secret here_destination_latitude_office
+    destination_longitude: !secret here_destination_longitude_office
+    mode: publicTransportTimeTable
+    traffic_mode: true

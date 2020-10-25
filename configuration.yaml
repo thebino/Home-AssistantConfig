@@ -1,0 +1,17 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# https://www.home-assistant.io/docs/configuration/basic/
+homeassistant:
+  ### The following installs all package files
+  packages: !include_dir_named packages
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include_dir_merge_list automations
+script: !include scripts.yaml
+scene: !include scenes.yaml

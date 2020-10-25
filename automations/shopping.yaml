@@ -1,0 +1,56 @@
+- id: '1603536071632'
+  alias: Check Edeka needs
+  description: Alerts Tanja that Ben is at Edeka, give her actions
+  trigger:
+  - platform: zone
+    entity_id: device_tracker.pixel_4
+    zone: zone.edeka
+    event: enter
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_5
+    data:
+      title: Ben ist beim Edeka!
+      message: '{{ as_timestamp(now()) | timestamp_custom(''%H:%M'', true) }} - Brauchst
+        du etwas?'
+      data:
+        importance: high
+        timeout: 1200
+        tag: Shopping
+        channel: Shopping
+        actions:
+        - action: edeka_need
+          title: Ja
+        - action: edeka_no
+          title: Nein
+  mode: single
+- id: '1603550271389'
+  alias: Check Edeka needs - Answer
+  description: ''
+  trigger:
+  - platform: event
+    event_data:
+      action: edeka_need
+    event_type: mobile_app_notification_action
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_5
+    data:
+      title: Tanja benötigt etwas vom Edeka
+      message: '{{ as_timestamp(now()) | timestamp_custom(''%H:%M'', true) }} - Check
+        the list or message her.'
+      data:
+        importance: high
+        timeout: 1200
+        tag: Shopping
+        channel: Shopping
+        sticky: 'true'
+        actions:
+        - action: URI
+          title: Open shopping list
+          uri: app://com.google.android.keep
+        - action: URI
+          title: Open Twitter
+          uri: app://com.twitter.android
+  mode: single
+

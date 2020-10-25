@@ -1,0 +1,35 @@
+#
+# Meeting indicator - Meeting LED on
+#
+- id: '1603606466811'
+  alias: Meeting Indicator - Meeting on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.meeting
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  condition: []
+  action:
+  - service: rest_command.meeting_on
+    data: {}
+  mode: restart
+  
+#
+# Meeting indicator - Meeting LED off
+#
+- id: '1603606497075'
+  alias: Meeting Indicator - Meeting off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.meeting
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: rest_command.meeting_off
+    data: {}
+  mode: restart

@@ -1,0 +1,16 @@
+# ignore folders
+.storage
+.cloud
+.google.token
+
+# ignore version file
+.HA_VERSION
+
+# ignore secrets and personal data
+secrets.yaml
+ip_bans.yaml
+known_devices.yaml
+
+# ignore log files & database
+*.log
+*.db

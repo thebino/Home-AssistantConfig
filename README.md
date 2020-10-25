@@ -4,5 +4,5 @@ Find custom configuration inside [packages](/packages) and associated [automatio
 
 <a href="https://travis-ci.org/thebino/Home-AssistantConfig"><img src="https://travis-ci.org/thebino/Home-AssistantConfig.svg?branch=master"/></a>
 
-![Screenshot](https://imgur.com/a/d7A7cjK)
+![Screenshot](Dashboard.png)
 

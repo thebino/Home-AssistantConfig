@@ -11,8 +11,6 @@
     to: 'on'
   condition: []
   action:
-  condition: []
-  action:
   - service: rest_command.meeting_on
     data: {}
   mode: restart

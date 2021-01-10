@@ -1,0 +1,27 @@
+- id: '1610306922033'
+  alias: Temperatur Trend (Children's room)
+  description: Alerts Ben's phone when the room is cooling down to fast
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.childrens_room_cooling_down
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_5
+    data:
+      title: Childrens room is freezing
+      message: Check the windows
+  mode: single
+
+- id: '1610308230239'
+  alias: Temperatur Trend (Bedroom)
+  description: Alerts Ben's phone when the room is cooling down to fast
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.childrens_room_cooling_down
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_5
+    data:
+      title: Bedroom is freezing
+      message: Check the windows
+  mode: single

@@ -2,6 +2,15 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+tankerkoenig:
+  api_key: !secret tanker_api_key
+  fuel_types:
+    - "diesel"
+  latitude: !secret tanker_latitude
+  longitude: !secret tanker_longitude
+  radius: 1
+  show_on_map: true
+
 # https://www.home-assistant.io/docs/configuration/basic/
 homeassistant:
   ### The following installs all package files

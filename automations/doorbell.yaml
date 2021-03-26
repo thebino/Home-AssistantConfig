@@ -1,7 +1,13 @@
 - id: '1600433472949'
   alias: Doorbell
-  description: Notify mobile phones when doorbell rang
+  description: Notify mobile phones and notebook when doorbell rang
   trigger:
+  - platform: device
+    device_id: 4f9f7ac21e716fb78b74335018f34dde
+    domain: mobile_app
+    type: notify
+    title: Your attention is required at the frontdoor
+    message: Doorbell!
   - platform: device
     domain: mqtt
     device_id: f5785908f9a311eaadcf19a78cb5bbf2
@@ -11,7 +17,7 @@
   condition: []
   action:
   - data:
-      message: Tür Klingel!
+      message: Doorbell!
       data:
         importance: high
         timeout: 600

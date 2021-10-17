@@ -1,0 +1,20 @@
+#
+# Turn on/off wall socket used for printer
+#
+- id: '1603645883072'
+  alias: Toggle Wall socket
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 1029f081d8a3911300c1357705211f53
+    type: action
+    subtype: toggle
+    discovery_id: 0xbc33acfffe17be8b action_toggle
+  condition: []
+  action:
+  - type: toggle
+    device_id: fb7865fc6f3c4afd9168c805bcd48173
+    entity_id: switch.0x04cf8cdf3c7c36a8_switch
+    domain: switch
+  mode: restart

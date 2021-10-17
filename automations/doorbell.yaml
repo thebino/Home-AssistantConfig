@@ -1,3 +1,6 @@
+#
+# Doorbell notification
+#
 - id: '1600433472949'
   alias: Doorbell
   description: Notify mobile phones and notebook when doorbell rang
@@ -16,15 +19,15 @@
     discovery_id: 0x00158d000323490e action_vibration
   condition: []
   action:
-  - data:
-      message: Doorbell!
+  - service: notify.mobile_app_pixel_5
+    data:
+      title: Doorbell!
+      message: 'Doorbell'
       data:
         importance: high
-        timeout: 600
-        color: '#F42C40'
+        timeout: 1200
         tag: Doorbell
         channel: Doorbell
-    service: notify.mobile_app_pixel_5
   mode: single
 - id: '1600439092711'
   alias: Doorbell sensitiviy - change

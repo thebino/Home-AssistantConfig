@@ -1,0 +1,23 @@
+- id: '1613847570540'
+  alias: Nightlight Toggle
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 4cafe84b73454a72b2f5279f4ca88534
+    type: click
+    subtype: single
+    discovery_id: 0x00158d00028f554c click_single
+  - platform: device
+    domain: mqtt
+    device_id: 761b8ef9598a27e1dc19b21654094df9
+    type: click
+    subtype: single
+    discovery_id: 0x00158d00067c406e click_single
+  condition: []
+  action:
+  - type: toggle
+    device_id: 748a51e1079ab87ec1e7974618911512
+    entity_id: light.night_light
+    domain: light
+  mode: restart

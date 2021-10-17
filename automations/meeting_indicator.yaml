@@ -1,12 +1,12 @@
 #
-# Meeting indicator - Meeting LED on
+# Macbook camera observer - ON
 #
-- id: '1603606466811'
-  alias: Meeting Indicator - Meeting on
+- id: '1617174352831'
+  alias: Meeting Indicator - camera observer (ON)
   description: ''
   trigger:
   - platform: state
-    entity_id: input_boolean.meeting
+    entity_id: binary_sensor.macbook_camera_in_use
     from: 'off'
     to: 'on'
   condition: []
@@ -14,16 +14,16 @@
   - service: rest_command.meeting_on
     data: {}
   mode: restart
-  
+
 #
-# Meeting indicator - Meeting LED off
+# Macbook camera observer - OFF
 #
-- id: '1603606497075'
-  alias: Meeting Indicator - Meeting off
+- id: '1617174494707'
+  alias: Meeting Indicator - camera observer (OFF)
   description: ''
   trigger:
   - platform: state
-    entity_id: input_boolean.meeting
+    entity_id: binary_sensor.macbook_camera_in_use
     from: 'on'
     to: 'off'
   condition: []

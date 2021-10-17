@@ -3,7 +3,7 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: input_boolean.headphones
+    entity_id: binary_sensor.macbook_microphone_in_use
     from: 'off'
     to: 'on'
   condition: []
@@ -18,7 +18,7 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: input_boolean.headphones
+    entity_id: binary_sensor.macbook_microphone_in_use
     from: 'on'
     to: 'off'
   condition: []

@@ -1,0 +1,102 @@
+#
+# alarm tracking to notify internally
+#
+- id: '1613895552654'
+  alias: Tracker
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: input_datetime.set_datetime
+    data:
+      datetime: '{{ now().strftime(''%Y-%m-%d %H:%M:%S'') }}'
+    entity_id: input_datetime.tracker
+  mode: single
+- id: '1616323457149'
+  alias: alarm timer observer
+  description: alarm timer is started when the input_boolean.alarm is turned on
+  trigger:
+  - platform: state
+    entity_id: input_boolean.alarm
+    to: 'on'
+  condition: []
+  action:
+  - service: timer.start
+    data:
+      duration: '0'
+    target:
+      entity_id: timer.alarm
+  - service: rest_command.alarm_on
+  mode: single
+- id: '1616324944828'
+  alias: alarm timer - handler
+  description: when timer is stopped, to action
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.alarm
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.alarm
+  - service: rest_command.alarm_off
+  mode: single
+- id: '1616326917560'
+  alias: alarm button
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 34b732658ef5676b905c0a5e43aacb0b
+    type: click
+    subtype: single
+    discovery_id: 0x00158d00067c40f8 click_single
+  - platform: device
+    domain: mqtt
+    device_id: 00f721c18beea4571f129ebf8a01fff1
+    type: click
+    subtype: single
+    discovery_id: 0x00158d0006792583 click_single
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.alarm
+  - device_id: 4f9f7ac21e716fb78b74335018f34dde
+    domain: mobile_app
+    type: notify
+    title: Your attention is required downstairs
+    message: Attention
+  - service: notify.mobile_app_pixel_5
+    data:
+      title: Attention
+      message: Your attention is required downstairs
+      channel: Alarm
+      importance: high
+      timeout: 120
+      color: '#2CF46B'
+      data:
+        channel: Alarm
+        importance: high
+        timeout: 120
+        color: '#2CF46B'
+  - device_id: ca22e02d8bdd4e84990833358691b1dd
+    domain: mobile_app
+    type: notify
+    title: Attention
+    message: Your attention is required downstairs
+  mode: single
+- id: '1616589971191'
+  alias: Notify Notebook
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - device_id: 4f9f7ac21e716fb78b74335018f34dde
+    domain: mobile_app
+    type: notify
+    title: test
+    message: test
+  mode: single

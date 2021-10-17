@@ -2,6 +2,14 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+logger:
+  default: warning
+  logs:
+    homeassistant.core: warning
+    homeassistant.components.mqtt: warning
+    custom_components.hacs: info
+    custom_components.rki_covid.sensor: debug
+
 tankerkoenig:
   api_key: !secret tanker_api_key
   fuel_types:

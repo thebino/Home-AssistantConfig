@@ -1,6 +1,9 @@
+#
+# toggle nightlight state
+#
 - id: '1613847570540'
   alias: Nightlight Toggle
-  description: ''
+  description: 'toggle nightlight state via button'
   trigger:
   - platform: device
     domain: mqtt
@@ -21,3 +24,20 @@
     entity_id: light.night_light
     domain: light
   mode: restart
+
+#
+# Turn-off nightlight on sunrise
+#
+- id: '1634622843793'
+  alias: nightlight sunrise trigger
+  description: 'turn-off the nightlight on sunrise'
+  trigger:
+  - platform: state
+    entity_id: sun.sun
+    attribute: rising
+  condition: []
+  action:
+  - service: light.turn_off
+    target:
+      entity_id: light.night_light
+  mode: single

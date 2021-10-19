@@ -1,7 +1,7 @@
-
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+# Define log levels
 logger:
   default: warning
   logs:
@@ -11,13 +11,13 @@ logger:
     custom_components.rki_covid.sensor: debug
 
 tankerkoenig:
-  api_key: !secret tanker_api_key
-  fuel_types:
+ api_key: !secret tanker_api_key
+ fuel_types:
     - "diesel"
-  latitude: !secret tanker_latitude
-  longitude: !secret tanker_longitude
-  radius: 1
-  show_on_map: true
+ latitude: !secret tanker_latitude
+ longitude: !secret tanker_longitude
+ radius: 1
+ show_on_map: true
 
 # https://www.home-assistant.io/docs/configuration/basic/
 homeassistant:
@@ -29,7 +29,8 @@ tts:
   - platform: google_translate
 
 group: !include groups.yaml
-#automation: !include_dir_merge_list automations
+
+# define config files for automations
 automation manual: !include_dir_merge_list automations/
 automation ui: !include automations.yaml
 
@@ -43,16 +44,12 @@ binary_sensor:
       childrens_room_cooling_down:
         entity_id: sensor.0x00158d0004aac23c_temperature
         sample_duration: 7200
-        max_samples: 30
-        min_gradient: -0.0008
+        max_samples: 120
+        min_gradient: -0.001388
         device_class: cold
-
-binary_sensor:
-  - platform: trend
-    sensors:
       bedroom_cooling_down:
         entity_id: sensor.0x00158d00053dfbb6_temperature
         sample_duration: 7200
-        max_samples: 30
-        min_gradient: -0.0008
+        max_samples: 120
+        min_gradient: -0.001388
         device_class: cold

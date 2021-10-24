@@ -32,9 +32,9 @@
   alias: nightlight sunrise trigger
   description: 'turn-off the nightlight on sunrise'
   trigger:
-  - platform: state
-    entity_id: sun.sun
-    attribute: rising
+  trigger:
+  - event: sunrise
+    platform: sun
   condition: []
   action:
   - service: light.turn_off

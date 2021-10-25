@@ -32,7 +32,6 @@
   alias: nightlight sunrise trigger
   description: 'turn-off the nightlight on sunrise'
   trigger:
-  trigger:
   - event: sunrise
     platform: sun
   condition: []
@@ -41,3 +40,4 @@
     target:
       entity_id: light.night_light
   mode: single
+ 
